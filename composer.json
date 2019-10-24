@@ -1,0 +1,25 @@
+{
+    "name": "chaika/shared-kernel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xdimedrolx",
+            "email": "xdimedrolx@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Chaika\\SharedKernel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Chaika\\SharedKernel\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "doctrine/dbal": "^2.6",
+        "ramsey/uuid": "^3.8"
+    }
+}
