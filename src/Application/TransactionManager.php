@@ -6,6 +6,13 @@ namespace Chaika\SharedKernel\Application;
 
 interface TransactionManager
 {
+    const 
+        LOCK_MODE_NONE = 0,
+        LOCK_MODE_OPTIMISTIC = 1,
+        LOCK_MODE_PESSIMISTIC_READ = 2,
+        LOCK_MODE_PESSIMISTIC_WRITE = 4
+    ;
+        
     public function flush();
     public function begin();
     public function commit();
