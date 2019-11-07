@@ -10,13 +10,10 @@ interface TransactionManager
     public function begin();
     public function commit();
     public function rollback();
-    /**
-     * @param callable $func The function to execute transactionally.
-     * @return mixed The non-empty value returned from the closure or true instead
-     * @throws \Exception
-     */
-    public function transactional($func);
+    public function transactional(callable $callback, int $attempts = 1);
+    public function lock($entity, int $lockMode, $lockVersion = null): void;
+
     public function isTransactionActive(): bool;
     public function isOpen(): bool;
-    public function lock($entity, int $lockMode, $lockVersion = null): void;
+    public function resetManager(): void;
 }
