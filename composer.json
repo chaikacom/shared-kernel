@@ -21,5 +21,8 @@
     "require": {
         "doctrine/dbal": "^2.6",
         "ramsey/uuid": "^3.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
