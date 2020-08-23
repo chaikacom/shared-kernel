@@ -29,7 +29,7 @@ class PaginationRequest
      * @return static
      * @throws InvalidArgumentException
      */
-    public static function makeByPage(int $page, int $limit): self
+    public static function makeByPage(int $page = 1, int $limit = 30): self
     {
         if ($page < 1) {
             throw new InvalidArgumentException('Page parameter must be greater or equals to 1');
@@ -41,7 +41,7 @@ class PaginationRequest
         );
     }
 
-    public static function makeByOffset(int $offset, int $limit): self
+    public static function makeByOffset(int $offset = 0, int $limit = 30): self
     {
         return new self($offset, $limit);
     }

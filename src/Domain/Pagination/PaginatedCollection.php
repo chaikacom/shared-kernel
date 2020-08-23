@@ -29,7 +29,7 @@ class PaginatedCollection
         return new self($items, $total, $request->offset(), $request->limit());
     }
 
-    public function items(): iterable
+    public function items(): array
     {
         return $this->items;
     }
@@ -42,6 +42,16 @@ class PaginatedCollection
     public function offset(): ?int
     {
         return $this->offset;
+    }
+
+    public function nextOffset(): int
+    {
+        return $this->offset + $this->limit;
+    }
+
+    public function hasMore(): bool
+    {
+        return $this->offset + $this->limit >= $this->total;
     }
 
     public function limit(): ?int
