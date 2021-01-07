@@ -51,7 +51,7 @@ class PaginatedCollection
 
     public function hasMore(): bool
     {
-        return $this->offset + $this->limit >= $this->total;
+        return ($this->offset + $this->limit) < $this->total;
     }
 
     public function limit(): ?int
@@ -71,7 +71,7 @@ class PaginatedCollection
     public function page(): int
     {
         $this->checkRequiredPageParams();
-        return ceil(($this->offset + 1) / $this->limit);
+        return ceil(($this->offset + $this->limit - 1) / $this->limit);
     }
 
     /**
