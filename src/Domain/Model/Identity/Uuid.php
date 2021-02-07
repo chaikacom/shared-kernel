@@ -14,12 +14,16 @@ abstract class Uuid implements BaseId
      * @param null|string $uuid
      * @throws InvalidIdException
      */
-    public function __construct(string $uuid = null)
+    public function __construct(?string $uuid = null)
     {
-        try {
-            $this->id = RUuid::fromString($uuid ?: RUuid::uuid4())->toString();
-        } catch (\Exception $e) {
-            throw new InvalidIdException(sprintf("Invalid uuid: %s", $uuid), 0, $e);
+        if ($uuid) {
+            if (RUuid::isValid($uuid)) {
+                $this->id = $uuid;
+            } else {
+                throw new InvalidIdException(sprintf("Invalid uuid: %s", $uuid));
+            }
+        } else {
+            $this->id = RUuid::uuid4()->toString();
         }
     }
 
