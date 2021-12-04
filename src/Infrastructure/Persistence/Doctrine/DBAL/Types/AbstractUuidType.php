@@ -9,6 +9,8 @@ use Doctrine\DBAL\Types\GuidType;
 
 abstract class AbstractUuidType extends GuidType
 {
+    abstract public function getClass(): string;
+    
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         $class = $this->getClass();
@@ -30,6 +32,16 @@ abstract class AbstractUuidType extends GuidType
         $className = $this->getClass();
         return new $className($value);
     }
-
-    abstract public function getClass(): string;
+    
+    /**
+     * {@inheritdoc}
+     *
+     * @param AbstractPlatform $platform
+     *
+     * @return bool
+     */
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }
