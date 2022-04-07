@@ -17,7 +17,7 @@ trait CreatedUpdatedAtTrait
         return $this->createdAt;
     }
 
-    public function updatedAt(): \DateTime
+    public function updatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
