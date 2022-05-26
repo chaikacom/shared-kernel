@@ -4,13 +4,25 @@ namespace Chaika\SharedKernel\Domain\Pagination;
 
 use Chaika\SharedKernel\Domain\Exception\InvalidValueException;
 
+/**
+ * @template T
+ */
 class PaginatedCollection
 {
+    /**
+     * @var T[]
+     */
     private $items;
     private $total;
     private $offset;
     private $limit;
 
+    /**
+     * @param T[] $items
+     * @param int $total
+     * @param int|null $offset
+     * @param int|null $limit
+     */
     private function __construct(array $items, int $total, ?int $offset = null, ?int $limit = null)
     {
         $this->items = $items;
@@ -29,6 +41,9 @@ class PaginatedCollection
         return new self($items, $total, $request->offset(), $request->limit());
     }
 
+    /**
+     * @return T[]
+     */
     public function items(): array
     {
         return $this->items;
