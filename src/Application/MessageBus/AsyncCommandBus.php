@@ -6,5 +6,5 @@ namespace Chaika\SharedKernel\Application\MessageBus;
 
 interface AsyncCommandBus
 {
-    public function handle(AsyncCommandMessage $command, string $queue, ?int $delay = null): void;
+    public function handle(AsyncCommandMessage $command, ?Options $options = null): void;
 }
