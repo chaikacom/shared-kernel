@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Chaika\SharedKernel\Application\MessageBus;
 
-interface EventMessage
+use Chaika\SharedKernel\Domain\Event\EventInterface;
+
+interface EventMessage extends EventInterface
 {
+
 }
