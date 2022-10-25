@@ -4,7 +4,11 @@ namespace Chaika\SharedKernel\Domain\Event;
 
 interface EventMapperInterface
 {
-    public function map(DomainEventInterface $event): ?IntegrationEventInterface;
+    /**
+     * @param DomainEventInterface $event
+     * @return IntegrationEventInterface[]
+     */
+    public function map(DomainEventInterface $event): array;
 
     /**
      * @param DomainEventInterface[] $events
