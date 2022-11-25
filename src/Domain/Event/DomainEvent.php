@@ -8,18 +8,18 @@ use Ramsey\Uuid\UuidInterface;
 
 abstract class DomainEvent implements DomainEventInterface
 {
-    protected $id;
+    protected $eventId;
     protected $occurredOn;
 
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
+        $this->eventId = Uuid::uuid4();
         $this->occurredOn = Carbon::now();
     }
 
-    public function id(): UuidInterface
+    public function eventId(): UuidInterface
     {
-        return $this->id;
+        return $this->eventId;
     }
 
     public function occurredOn(): \DateTimeInterface

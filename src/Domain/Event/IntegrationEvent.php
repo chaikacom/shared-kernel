@@ -8,18 +8,24 @@ use Ramsey\Uuid\UuidInterface;
 
 abstract class IntegrationEvent implements IntegrationEventInterface
 {
-    protected $id;
+    protected $eventId;
     protected $occurredOn;
 
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
+        $this->eventId = Uuid::uuid4();
         $this->occurredOn = Carbon::now();
     }
 
-    public function id(): UuidInterface
+    public function eventId(): UuidInterface
     {
-        return $this->id;
+        return $this->eventId;
+    }
+
+    public function setEventId(UuidInterface $eventId): self
+    {
+        $this->eventId = $eventId;
+        return $this;
     }
 
     public function occurredOn(): \DateTimeInterface
