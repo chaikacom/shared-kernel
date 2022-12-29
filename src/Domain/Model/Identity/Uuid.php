@@ -17,14 +17,14 @@ abstract class Uuid implements BaseId
     public function __construct(?string $uuid = null)
     {
         if ($uuid) {
-            if (RUuid::isValid($uuid)) {
-                $this->id = $uuid;
-            } else {
+            if (!RUuid::isValid($uuid)) {
                 throw new InvalidIdException(sprintf("Invalid uuid: %s", $uuid));
             }
-        } else {
-            $this->id = RUuid::uuid4()->toString();
+            $this->id = $uuid;
+            return;
         }
+
+        $this->id = RUuid::uuid4()->toString();
     }
 
     public function id(): string

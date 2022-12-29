@@ -9,18 +9,22 @@ use Doctrine\DBAL\Types\BigIntType;
 
 abstract class AbstractBigIntIdType extends BigIntType
 {
+    #[\ReturnTypeWillChange]
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         $class = $this->getClass();
         if (null === $value) {
             return null;
-        } else if ($value instanceof $class) {
+        }
+
+        if ($value instanceof $class) {
             return $value->id();
         }
 
         return (int) $value;
     }
 
+    #[\ReturnTypeWillChange]
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (null === $value) {
