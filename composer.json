@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "doctrine/dbal": "^2.6",
+        "doctrine/dbal": "^2.6|^3.0",
         "ramsey/uuid": "^3.5"
     }
 }
